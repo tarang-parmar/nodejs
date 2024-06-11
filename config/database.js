@@ -2,9 +2,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://root:root@cruddb.sjtnhpv.mongodb.net/CrudDB?retryWrites=true&w=majority&appName=CrudDB"
-    );
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("Database connected successfully!");
   } catch (error) {
     console.error("Database connection error:", error);

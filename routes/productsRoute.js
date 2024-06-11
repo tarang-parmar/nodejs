@@ -8,9 +8,15 @@ import {
   updateProductById,
 } from "../controllers/productsController.js";
 import authenticateToken from "../middlewares/authenticateToken.js";
+import { validateProductInput } from "../schemas/productSchema.js";
 
 const productRoutes = express.Router();
-productRoutes.post("/product", upload.array("image"), createProduct);
+productRoutes.post(
+  "/product",
+  validateProductInput,
+  upload.array("image"),
+  createProduct
+);
 productRoutes.get("/products", authenticateToken, getAllProducts);
 productRoutes.get("/product/:id", getProductById);
 productRoutes.put("/product/:id", upload.array("image"), updateProductById);
