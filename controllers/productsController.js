@@ -9,7 +9,7 @@ const createProduct = async (req, res) => {
     const image =
       req.files.length > 0
         ? req.files.map((item) => {
-            return item.filename || null;
+            return `${process.env.IMAGE_URI}${item?.filename}` || null;
           })
         : [];
     const product = await Product.create({
@@ -89,7 +89,7 @@ const updateProductById = async (req, res) => {
 
     if (req?.files?.length > 0) {
       const newImage = req?.files?.map((item) => {
-        return item.filename || null;
+        return `${process.env.IMAGE_URI}${item?.filename}` || null;
       });
       const existingProduct = await Product.findById(id);
       if (!existingProduct) {
@@ -106,7 +106,7 @@ const updateProductById = async (req, res) => {
           const oldImagePath = path.join(
             getFilePaths(import.meta.url),
             "../uploads/images",
-            image
+            image?.split("/")?.pop()
           );
           if (fs.existsSync(oldImagePath)) {
             fs.unlinkSync(oldImagePath);

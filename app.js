@@ -11,10 +11,7 @@ app.use(cors());
 
 app.use("/api", productRoutes);
 app.use("/api", demoRoutes);
-app.use(
-  "/uploads",
-  express.static(path.join(getFilePaths(import.meta.url), "uploads"))
-);
+app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
   res.send(`Server is running at ${process.env.PORT}`);

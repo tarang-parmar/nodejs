@@ -13,7 +13,7 @@ import { validateProductInput } from "../schemas/productSchema.js";
 const productRoutes = express.Router();
 productRoutes.post(
   "/product",
-  validateProductInput,
+  // validateProductInput,
   upload.array("image"),
   createProduct
 );
