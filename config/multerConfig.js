@@ -5,7 +5,7 @@ import { getFilePaths } from "./Utils.js";
 // Set up storage configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(getFilePaths(import.meta.url), "../uploads/images"));
+    cb(null, path.join(getFilePaths(import.meta.url), "../images"));
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);

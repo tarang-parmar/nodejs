@@ -105,7 +105,7 @@ const updateProductById = async (req, res) => {
         existingProduct?.image?.forEach((image) => {
           const oldImagePath = path.join(
             getFilePaths(import.meta.url),
-            "../uploads/images",
+            "../images",
             image?.split("/")?.pop()
           );
           if (fs.existsSync(oldImagePath)) {

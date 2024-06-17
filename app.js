@@ -11,7 +11,10 @@ app.use(cors());
 
 app.use("/api", productRoutes);
 app.use("/api", demoRoutes);
-app.use("/uploads", express.static("uploads"));
+/**
+ * Serves static files from the 'uploads' directory.
+ */
+app.use("/images", express.static("images"));
 
 app.get("/", (req, res) => {
   res.send(`Server is running at ${process.env.PORT}`);
